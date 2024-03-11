@@ -14,6 +14,29 @@ Creating a new project with `ng new <project-name`. After that we get asked whic
 
 We run `ng serve` for the dev server running on `http://localhost:4200/`. Any changes in source files will result in a reload. We can now see a basic Angular greetings page in our browser. The source files for this page are generated in the projet creation and are located in `src\app\app.component.html`.
 
+## Components (and Modules)
+Components are the basic building blocks of Angular apps. Older Angular applications are built with Modules bundeling Components together. This is not the preferred approach anymore and we will use so calles Standalone Components in this project. Nevertheless it is usefull to know about modules for projects using them or to understand the concepts which are still used in standalone components ([Angular Modules](https://angular.io/guide/architecture-modules)).
+
+## First new Page
+We generate a new page in our pages directory `src\app\pages` using `ng generate component <page-name>`. This new component consists of 4 files:
+- `src\app\pages\first-page\first-page.component.css` - css file for additional style information only used in the component
+- `src\app\pages\first-page\first-page.component.html` - html file for the structure of this page
+- `src\app\pages\first-page\first-page.component.spec.ts` - specification for tests
+- `src\app\pages\first-page\first-page.component.ts` - typescript file for logic programming for this component
+
+To make the new page accessable we need to introduce a route to it. Therefore we enter the Object 
+`
+{
+    path: 'first',
+    component: FirstPageComponent
+}
+`
+to the list of routes in `src\app\app.routes.ts` and import the typescript file accordingly. After that we can navigate to the new page via the address line of the browser. The content will be shown below the welcome page as on angular a component is technicaly not a whole page and rather a part of it or a view which gets shown in the routing-outlet of the parrent component. For us this outlet defined in the app's base component `src\app\app.component.html` as `
+<router-outlet>
+</router-outlet>
+`. The content will be shown between these tags.
+
+
 
 ## Code scaffolding
 
