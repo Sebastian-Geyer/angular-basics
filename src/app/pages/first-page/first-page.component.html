@@ -1,1 +1,6 @@
-<p>first-page works!</p>
+<form>
+    <label for="textInput">Text: </label>
+    <input id="textInput" type="text" [formControl]="formControl" />
+</form>
+<button type="button" (click)="onClick()">Click me!</button>
+<span>{{ savedText }}</span>

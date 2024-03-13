@@ -36,7 +36,41 @@ to the list of routes in `src\app\app.routes.ts` and import the typescript file 
 </router-outlet>
 `. The content will be shown between these tags.
 
+## First Content and Bindings
 
+After creating our first page, we can start adding content to it. For that we will add a input field and a button to save some text to the page. We will display this text in different ways. We will use `src\app\pages\first-page\` for this again. First we add our building blocks to the `.html` file.
+```
+<form>
+    <label for="textInput">Text: </label>
+    <input id="textInput" type="text" [formControl]="formControl" />
+</form>
+<button type="button" (click)="onClick()">Click me!</button>
+<span>{{ savedText }}</span>
+```
+There is a form with one text input, a button and a span displaying the text. Now we will bind the buildung blocks to logic in the `.ts` file.
+```
+  public savedText: string = "Starting Text";
+  public formControl: FormControl = new FormControl();
+
+  public onClick(): void {
+    this.savedText = this.formControl.getRawValue();
+  }
+```
+`SavedText` is our string variable, which gets displayed on the page. This binding is done by wrapping the the typscript variable in curly brackets like `{{ savedText }}`. When binding to en attribute of a tag the attribute the tag in enclosed by square brackets and the typescript variable as a value like `[formControl]="formControl"`. The third binding we use here, is the event binding when connecting our function to the button by enclosing the event with brackets like `(click)="onClick()"`. You can read an overview over all binding in angular in [Angular Bindings](https://angular.io/guide/binding-syntax).
+
+To use the binding to the form, we need some import from the angular framework. In addition to the typescript import, we need to import all used Angular Modules in the metadata of the component.
+```
+import { ReactiveFormsModule, FormControl   } from '@angular/forms';
+
+@Component({
+  selector: 'app-first-page',
+  standalone: true,
+  imports: [ ReactiveFormsModule ],
+  templateUrl: './first-page.component.html',
+  styleUrl: './first-page.component.css'
+})
+```
+## Using a frontend library
 
 ## Code scaffolding
 
