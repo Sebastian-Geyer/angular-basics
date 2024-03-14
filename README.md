@@ -72,22 +72,25 @@ import { ReactiveFormsModule, FormControl   } from '@angular/forms';
 ```
 ## Using a frontend library
 
-## Code scaffolding
+When developing a frontend application it is often advisable to use a frontend library to get more components and preconfigured styles. When working in an larger project the styles will probably be defined by seperate design experts. In this project we will use [Prime NG](https://primeng.org/).
+For this we will install their package with `npm install primeng` and include their style defintitions in the 'angular.json' like:
+```
+            "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "src/styles.css"
+            ],
+```
+We can choose between multiple built-in [Themes](https://primeng.org/theming#builtinthemes).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To see the newly introduced styles in action, we will create another page to input text. Component suites like prime ng often have good documentation on how to use their components. For our sample page we will use a [Button](https://primeng.org/button) and an [InputText](https://primeng.org/inputtext).
 
-## Build
+```
+<p-button label="textInput" (onClick)="onClick()"></p-button>
+<input type="text" pInputText [(ngModel)]="textInputValue" />
+<span>{{ savedText }}</span>
+```
+When using these components in the html, we can see the `p` in `p-button` and `pInputText` indicating the prime component. Overall the implementation in the `html` and `typescript` is similar and maybe easier to read with the prime components. The big benefit is, that we can instantly see the styles used in our page.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+On problem we might encounter, is that we still need the import for the `FormsModule` to use the binding in the InputText component. The error message for this `X [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]` gives a hint for this.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
