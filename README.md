@@ -94,3 +94,25 @@ When using these components in the html, we can see the `p` in `p-button` and `p
 
 On problem we might encounter, is that we still need the import for the `FormsModule` to use the binding in the InputText component. The error message for this `X [ERROR] NG8002: Can't bind to 'ngModel' since it isn't a known property of 'input'. [plugin angular-compiler]` gives a hint for this.
 
+## Frontpage with Navigation
+
+In this chapter we will implement a frontpage with navigation, so we can access all other chapters easily. 
+
+We needed to add two more dependencies to our project:
+- [primeflex](https://primeflex.org/) for flexible style presets
+- [prime icons](https://primeng.org/icons) for a set of usable icons
+
+These have to be installed with npm and added to the `angular.json`. Adding these in a the base style deifinition `src\styles.css` is possible, too.
+```
+npm install primeflex
+npm install primeicons
+```
+```
+            "styles": [
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css",
+              "src/styles.css"
+            ],
+```
